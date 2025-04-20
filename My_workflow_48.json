@@ -47,8 +47,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        1280,
-        160
+        1000,
+        360
       ],
       "id": "27894381-0e4c-4742-b94f-12f26d686421",
       "name": "Voucher sender",
@@ -223,13 +223,7 @@
     },
     "Alert shop": {
       "main": [
-        [
-          {
-            "node": "Voucher sender",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Nếu > 3*": {
@@ -261,6 +255,11 @@
         ],
         [
           {
+            "node": "Voucher sender",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "Alert shop",
             "type": "main",
             "index": 0
@@ -284,7 +283,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "4d3ad9eb-7cfc-4939-9930-84b34ece3ebd",
+  "versionId": "06ef0839-5c7b-48ec-9c45-561fda11f676",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "09a85fe58bc0a72a9b1fef8c6cae7c634bf0a948ea9b43856c52d0a7ecd1bd2c"
