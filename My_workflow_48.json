@@ -1,0 +1,294 @@
+{
+  "name": "My workflow 48",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bb6733c3-307f-47a2-89a2-6ac86a28d6a8",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.mail }}",
+        "subject": "Thư cảm ơn quý khách hàng",
+        "emailType": "text",
+        "message": "=Chào {{ $json.cus_name }}\nMình là chủ Teenshop đây ạ!\nTrước hết, cảm ơn bạn rất nhiều vì đã dành thời gian để để lại review cho sản phẩm {{ $json.product_name }} mà bạn đã mua gần đây. Mỗi lời góp ý của bạn đều rất quý giá với tụi mình!\nMình có đọc review của bạn và thật sự rất trân trọng chia sẻ của bạn. Để tụi mình có thể phục vụ bạn tốt hơn nữa trong tương lai, không biết bạn có thể chia sẻ thêm một chút về trải nghiệm của mình không ạ? ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        -20
+      ],
+      "id": "7a941324-c834-41c3-89ca-b43cd7d1bcde",
+      "name": "Reply Generator",
+      "webhookId": "2ae62394-75a8-419e-a670-b5b64398a0f6",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "t1gT9J9nPsqhTekr",
+          "name": "Gmail account 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.mail }}",
+        "subject": "Thư xin lỗi vì trải nghiệm chưa trọn vẹn",
+        "emailType": "text",
+        "message": "=Chào bạn {{ $json.cus_name }},  \nMình là chủ TeenShop đây ạ. Mình vừa đọc review mà bạn đã để lại về sản phẩm {{ $json.product_name }}, và thành thật xin lỗi bạn vì trải nghiệm không như kỳ vọng mà bạn đã gặp phải.  \nTụi mình thực sự rất tiếc khi sản phẩm/dịch vụ chưa mang lại sự hài lòng cho bạn. Mỗi phản hồi – dù tích cực hay tiêu cực – đều rất quan trọng với tụi mình, vì đó là cơ hội để cải thiện và làm tốt hơn mỗi ngày.  \nMình đang xem lại quy trình xử lý đơn hàng cũng như chất lượng sản phẩm để tránh tình trạng tương tự xảy ra. Nếu bạn có thêm chia sẻ cụ thể hơn, mình rất mong nhận được để có thể xử lý triệt để và học hỏi thêm.  \n💌 Như một lời xin lỗi chân thành, tụi mình xin gửi bạn một mã giảm giá trị giá 20% giá trị đơn hàng , bạn có thể sử dụng cho đơn hàng tiếp theo (áp dụng đến hết).  Hy vọng tụi mình sẽ có cơ hội được phục vụ bạn tốt hơn lần tới và mang lại một trải nghiệm trọn vẹn hơn.\nMột lần nữa, tụi mình thật lòng xin lỗi và cảm ơn bạn đã phản hồi.  \nThân mến\nTeenshop",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1280,
+        160
+      ],
+      "id": "27894381-0e4c-4742-b94f-12f26d686421",
+      "name": "Voucher sender",
+      "webhookId": "4a1c68f8-9166-4003-9271-9160cd89de65",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "t1gT9J9nPsqhTekr",
+          "name": "Gmail account 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "teenshop2025@gmail.com",
+        "subject": "=Cảnh báo: Khách hàng {{ $json.cus_name }} để lại review tiêu cực về  {{ $json.product_name }}",
+        "emailType": "text",
+        "message": "=Chào team \nChúng ta vừa nhận được một review tiêu cực từ khách hàng {{ $json.cus_name }} liên quan đến sản phẩm {{ $json.product_name }} / Đơn hàng:{{ $json.order_id }}. \nNội dung review: {{ $json.reviews }} \nTình trạng ghi nhận:  Đơn hàng được đặt ngày:{{ $json.order_time }} \nYêu cầu xử lý:  \nBộ phận CSKH cần liên hệ khách hàng trong vòng [24h / 12h] để xin lỗi và hỗ trợ.  \nKiểm tra lại chất lượng sản phẩm và quy trình đóng gói/giao hàng.  \nCập nhật báo cáo xử lý nội bộ và phản hồi lại trong nhóm này. ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        160
+      ],
+      "id": "0346273b-b2b8-4784-9a8d-49ce8c0df05d",
+      "name": "Alert shop",
+      "webhookId": "229c379a-0acd-4502-98f5-41130dfa3937",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "t1gT9J9nPsqhTekr",
+          "name": "Gmail account 16"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7dc9d7c8-250e-4a53-b806-95a4fe3604db",
+              "leftValue": "={{ $json.rating }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        0
+      ],
+      "id": "ceaf0b6b-eba8-40ef-8f44-f1f85000388d",
+      "name": "Nếu > 3*"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce4d84cc-938c-46a0-b70c-fbc1803e3862",
+              "leftValue": "={{ $json.rating }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        100
+      ],
+      "id": "a8e16f29-7586-425e-bcab-64b4ccd944a5",
+      "name": "Nếu = 3*"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1qUXXdZmj-MeYaY9DhxWBmvIRtqndPNyZdNCZgyLKpl0",
+          "mode": "list",
+          "cachedResultName": "Product_order",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qUXXdZmj-MeYaY9DhxWBmvIRtqndPNyZdNCZgyLKpl0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Trang tính1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qUXXdZmj-MeYaY9DhxWBmvIRtqndPNyZdNCZgyLKpl0/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        240,
+        0
+      ],
+      "id": "c4f5fb98-a278-46a7-9aeb-cc101b15678c",
+      "name": "Data reviews từ khác hàng",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "jzQ9HRpGo607WXSh",
+          "name": "Google Sheets account 18"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.mail }}",
+        "subject": "=Thư cảm ơn  {{ $json.cus_name }} vì đã mua hàng ",
+        "emailType": "text",
+        "message": "=Chào bạn  {{ $json.cus_name }}\nMình là chủ Teenshop đây ạ! Tụi mình vừa đọc được review của bạn về sản phẩm {{ $json.product_name }}, và thật sự rất vui, rất cảm động luôn 😍 \nLời khen của bạn chính là nguồn động lực to lớn để tụi mình tiếp tục cố gắng mỗi ngày. Cảm ơn bạn vì đã dành thời gian chia sẻ trải nghiệm — điều đó có ý nghĩa rất lớn với tụi mình và cũng giúp những khách hàng khác có thêm niềm tin nữa đó ạ.  \nNếu bạn có bất kỳ góp ý hay mong muốn nào cho lần mua sắm tiếp theo, đừng ngần ngại chia sẻ với tụi mình nhé!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        -100
+      ],
+      "id": "b3142be1-8ed0-404d-9347-1730cf41bdad",
+      "name": "Recomender",
+      "webhookId": "03185ffe-ca99-4c7e-a982-7a2ff8a15d09",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "t1gT9J9nPsqhTekr",
+          "name": "Gmail account 16"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Data reviews từ khác hàng",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alert shop": {
+      "main": [
+        [
+          {
+            "node": "Voucher sender",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nếu > 3*": {
+      "main": [
+        [
+          {
+            "node": "Recomender",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nếu = 3*",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nếu = 3*": {
+      "main": [
+        [
+          {
+            "node": "Reply Generator",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Alert shop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data reviews từ khác hàng": {
+      "main": [
+        [
+          {
+            "node": "Nếu > 3*",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4d3ad9eb-7cfc-4939-9930-84b34ece3ebd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "09a85fe58bc0a72a9b1fef8c6cae7c634bf0a948ea9b43856c52d0a7ecd1bd2c"
+  },
+  "id": "UbNw2jY1FGw3fxUF",
+  "tags": []
+}
